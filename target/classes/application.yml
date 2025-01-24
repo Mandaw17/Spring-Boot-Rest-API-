@@ -1,0 +1,32 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    platform: postgres
+    url: jdbc:postgresql://localhost:5418/test_recrutement
+    password: passer123
+    username: some_user
+    initialization-mode: always
+    continue-on-error: false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+    database: postgresql
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/galima-test-recrutement-realm
+
+keycloak:
+  auth-server-url: http://localhost:8080/
+  realm: galima-test-recrutement-realm
+  admin-client-id: spring-cloud-client
+  admin-client-secret: g92y0N2C9aiS7OfOfrkSVPoWvSaoyhyb
+  admin-username: admin
+  admin-password: admin
+  login-url: http://localhost:8080/realms/galima-test-recrutement-realm/protocol/openid-connect/token
